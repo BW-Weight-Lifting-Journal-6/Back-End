@@ -14,6 +14,7 @@ router.post("/register", (req, res) => {
       res.status(201).json(saved);
     })
     .catch(error => {
+      console.error("the error is", error);
       res.status(500).json(error);
     });
 });
@@ -36,6 +37,7 @@ router.post("/login", (req, res) => {
     .catch(error => {
       res.status(500).json(error);
     });
+  console.log("made it here");
 });
 
 function signToken(user) {
