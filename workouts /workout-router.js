@@ -1,10 +1,11 @@
 const express = require("express");
+const restricted = require("../auth/restricted-middleware.js");
 
 const Workout = require("./workout-model.js");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Workout.findWorkout()
     .then(workout => {
       res.json(workout);
@@ -14,7 +15,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   const workoutData = req.body;
 
   Workout.addWorkout(workoutData)
@@ -28,7 +29,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", restricted, (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -50,7 +51,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const { id } = req.params;
 
   Workout.deleteWorkout(id)
