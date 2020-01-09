@@ -5,7 +5,8 @@ module.exports = {
   findWorkout,
   findByWorkoutId,
   updateWorkout,
-  deleteWorkout
+  deleteWorkout,
+  getWorkoutsByUsersId
 };
 
 function findWorkout() {
@@ -17,9 +18,7 @@ function addWorkout(workout) {
 }
 
 function findByWorkoutId(id) {
-  return db("workout")
-    .where({ id })
-    .first();
+  return db("workout").where({ id });
 }
 function updateWorkout(changes, id) {
   return db("workout")
@@ -30,4 +29,7 @@ function deleteWorkout(id) {
   return db("workout")
     .where({ id: id })
     .del();
+}
+function getWorkoutsByUsersId(users_id) {
+  return db("workout").where({ users_id });
 }

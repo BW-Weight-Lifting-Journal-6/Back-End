@@ -15,9 +15,21 @@ router.get("/", restricted, (req, res) => {
     });
 });
 
-router.post("/", restricted, (req, res) => {
-  const workoutData = req.body;
+router.get("/:users_id", (req, res) => {
+  const { users_id } = req.params;
 
+  Workout.getWorkoutsByUsersId(users_id)
+    .then(workoutsByUsersId => {
+      res.status(200).json(workoutsByUsersId);
+    })
+    .catch(error => {
+      res.status(500).json({ message: "unable to get users workout " });
+    });
+});
+
+router.post("/", (req, res) => {
+  const workoutData = req.body;
+  console.log(workoutData);
   Workout.addWorkout(workoutData)
 
     .then(workout => {
@@ -25,6 +37,7 @@ router.post("/", restricted, (req, res) => {
     })
     .catch(error => {
       console.error(error, "this is the error");
+
       res.status(500).json({ message: "unable to create new workout" });
     });
 });

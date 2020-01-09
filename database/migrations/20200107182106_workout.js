@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable("workout", workout => {
     workout.increments();
-
+    //workout.increments('name of table id').primary()
     workout.string("exercise", 128).notNullable();
 
     workout.timestamp("created_at").defaultTo(knex.fn.now());
