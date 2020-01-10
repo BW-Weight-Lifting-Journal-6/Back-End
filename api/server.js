@@ -14,4 +14,8 @@ server.use(helmet());
 server.use("/api/users", usersRouter);
 server.use("/api/auth", authRouter);
 server.use("/api/workout", workoutRouter);
+
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "up", dbenv: process.env.DB_ENV });
+});
 module.exports = server;

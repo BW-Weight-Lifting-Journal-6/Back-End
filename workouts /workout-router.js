@@ -11,7 +11,7 @@ router.get("/", restricted, (req, res) => {
       res.json(workout);
     })
     .catch(error => {
-      req.status(500).json({ message: "failed to get workout" });
+      req.status(500).json({ message: "failed to get workouts" });
     });
 });
 
