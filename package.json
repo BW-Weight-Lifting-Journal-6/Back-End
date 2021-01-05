@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/BW-Weight-Lifting-Journal-6/Back-End#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
