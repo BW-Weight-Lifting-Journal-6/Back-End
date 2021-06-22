@@ -4,7 +4,7 @@ const restricted = require("../auth/restricted-middleware.js");
 const Workout = require("./workout-model.js");
 
 const router = express.Router();
-
+// get request
 router.get("/", restricted, (req, res) => {
   Workout.findWorkout()
     .then(workout => {
@@ -14,7 +14,7 @@ router.get("/", restricted, (req, res) => {
       req.status(500).json({ message: "failed to get workouts" });
     });
 });
-
+// get user by id request
 router.get("/:users_id", (req, res) => {
   const { users_id } = req.params;
 
@@ -26,7 +26,7 @@ router.get("/:users_id", (req, res) => {
       res.status(500).json({ message: "unable to get users workout " });
     });
 });
-
+// post new workout request 
 router.post("/", (req, res) => {
   const workoutData = req.body;
   console.log(workoutData);
