@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
       res.status(500).json({ message: "unable to create new workout" });
     });
 });
-
+// put request 
 router.put("/:id", restricted, (req, res) => {
   const { id } = req.params;
   const changes = req.body;
@@ -63,7 +63,7 @@ router.put("/:id", restricted, (req, res) => {
       res.status(500).json({ message: "Failed to update workout" });
     });
 });
-
+// Delete request
 router.delete("/:id", restricted, (req, res) => {
   const { id } = req.params;
 
